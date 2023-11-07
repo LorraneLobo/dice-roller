@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name" translatable="false">Dice roll</string>
+
+    <string name="dice_title">Throw the dice</string>
+    <string name="dice_button_text">Throw the dice</string>
+    <string name="dice_image_description">Dice face image</string>
+</resources>
