@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvDiceTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_4"
-        android:text="@string/dice_title"
-        android:textColor="@color/black"
-        android:textSize="@dimen/title_text_size"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgDice"
         android:layout_width="wrap_content"
@@ -26,7 +15,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btnRollDice"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDiceTitle" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRollDice"
@@ -38,5 +27,47 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDiceNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" "
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/imgDice"
+        app:layout_constraintEnd_toEndOf="@+id/imgDice"
+        app:layout_constraintStart_toStartOf="@+id/imgDice"
+        app:layout_constraintTop_toTopOf="@+id/imgDice" />
+
+    <com.nambimobile.widgets.efab.ExpandableFabLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.nambimobile.widgets.efab.ExpandableFab
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            app:efab_fabOptionPosition="below"
+            app:efab_icon="@drawable/dices"
+            app:efab_color="@color/purple_200"
+            app:maxImageSize="46dp"
+            app:efab_fabOptionSize="mini"
+            app:efab_iconAnimationRotationDeg="-135"
+            android:layout_marginTop="@dimen/margin_4"
+            android:layout_marginEnd="@dimen/margin_4" />
+
+        <com.nambimobile.widgets.efab.FabOption
+            android:id="@+id/addD20Dice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:label_text="Adicionar D20"/>
+
+        <com.nambimobile.widgets.efab.FabOption
+            android:id="@+id/addD6ClassicDice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:label_text="Adicionar D6 Classico"/>
+
+    </com.nambimobile.widgets.efab.ExpandableFabLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
