@@ -32,7 +32,7 @@
         android:id="@+id/tvDiceNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" "
+        android:text="@string/empty_string"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/imgDice"
         app:layout_constraintEnd_toEndOf="@+id/imgDice"
