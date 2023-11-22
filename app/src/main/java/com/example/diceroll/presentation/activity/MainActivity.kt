@@ -1,13 +1,19 @@
-package com.example.diceroll
+package com.example.diceroll.presentation.activity
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
+import com.example.diceroll.R
 import com.example.diceroll.databinding.ActivityMainBinding
+import com.example.diceroll.presentation.viewmodel.MainViewModel
+import com.nambimobile.widgets.efab.FabOption
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val viewModel: MainViewModel by viewModels()
     private var actualDice = 6
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,43 +21,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setClickListeners()
+        configDicesView()
     }
 
     private fun setClickListeners() {
-        binding.addD6ClassicDice.setOnClickListener {
-            actualDice = 6
-            rollClassicD6Dice()
-        }
-        binding.addD4Dice.setOnClickListener {
-            actualDice = 4
-            binding.tvDiceNumber.text = " "
-            binding.imgDice.setImageResource(R.drawable.d4)
-        }
-        binding.addD8Dice.setOnClickListener {
-            actualDice = 8
-            binding.tvDiceNumber.text = " "
-            binding.imgDice.setImageResource(R.drawable.d8)
-        }
-        binding.addD10Dice.setOnClickListener {
-            actualDice = 10
-            binding.tvDiceNumber.text = " "
-            binding.imgDice.setImageResource(R.drawable.d10)
-        }
-        binding.addD12Dice.setOnClickListener {
-            actualDice = 12
-            binding.tvDiceNumber.text = " "
-            binding.imgDice.setImageResource(R.drawable.d12)
-        }
-        binding.addD20Dice.setOnClickListener {
-            actualDice = 20
-            binding.tvDiceNumber.text = " "
-            binding.imgDice.setImageResource(R.drawable.d20)
-        }
-        binding.addD100Dice.setOnClickListener {
-            actualDice = 100
-            binding.tvDiceNumber.text = " "
-            binding.imgDice.setImageResource(R.drawable.d100)
-        }
         binding.btnRollDice.setOnClickListener {
             val maxNumber = actualDice
             if (maxNumber == 6 ) {
@@ -75,6 +48,21 @@ class MainActivity : AppCompatActivity() {
             5 -> binding.imgDice.setImageResource(R.drawable.dice5)
             6 -> binding.imgDice.setImageResource(R.drawable.dice6)
             else -> binding.imgDice.setImageResource(R.drawable.dice1)
+        }
+    }
+
+    private fun configDicesView() {
+        viewModel.diceList.forEach { dice ->
+            val fab = FabOption(context = this).apply {
+                label.labelText = "Rolar D${dice.faces}"
+                fabOptionIcon = AppCompatResources.getDrawable(this@MainActivity, dice.image)
+                setOnClickListener {
+                    actualDice = dice.faces
+                    binding.tvDiceNumber.text = " "
+                    binding.imgDice.setImageResource(dice.image)
+                }
+            }
+            binding.diceButtons.addView(fab)
         }
     }
 }

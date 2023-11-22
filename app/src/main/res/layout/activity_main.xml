@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".presentation.activity.MainActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgDice"
@@ -40,6 +40,7 @@
         app:layout_constraintTop_toTopOf="@+id/imgDice" />
 
     <com.nambimobile.widgets.efab.ExpandableFabLayout
+        android:id="@+id/diceButtons"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -55,48 +56,6 @@
             app:efab_iconAnimationRotationDeg="-135"
             android:layout_marginTop="@dimen/margin_4"
             android:layout_marginEnd="@dimen/margin_4" />
-
-        <com.nambimobile.widgets.efab.FabOption
-            android:id="@+id/addD6ClassicDice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:label_text="Adicionar D6 Classico"/>
-
-        <com.nambimobile.widgets.efab.FabOption
-            android:id="@+id/addD4Dice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:label_text="Adicionar D4"/>
-
-        <com.nambimobile.widgets.efab.FabOption
-            android:id="@+id/addD8Dice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:label_text="Adicionar D8"/>
-
-        <com.nambimobile.widgets.efab.FabOption
-            android:id="@+id/addD10Dice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:label_text="Adicionar D10"/>
-
-        <com.nambimobile.widgets.efab.FabOption
-            android:id="@+id/addD12Dice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:label_text="Adicionar D12"/>
-
-        <com.nambimobile.widgets.efab.FabOption
-            android:id="@+id/addD20Dice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:label_text="Adicionar D20"/>
-
-        <com.nambimobile.widgets.efab.FabOption
-            android:id="@+id/addD100Dice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:label_text="Adicionar D100"/>
 
     </com.nambimobile.widgets.efab.ExpandableFabLayout>
 
