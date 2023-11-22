@@ -18,13 +18,39 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setClickListeners() {
-        binding.addD20Dice.setOnClickListener {
-            actualDice = 20
-            binding.imgDice.setImageResource(R.drawable.d20)
-        }
         binding.addD6ClassicDice.setOnClickListener {
             actualDice = 6
             rollClassicD6Dice()
+        }
+        binding.addD4Dice.setOnClickListener {
+            actualDice = 4
+            binding.tvDiceNumber.text = " "
+            binding.imgDice.setImageResource(R.drawable.d4)
+        }
+        binding.addD8Dice.setOnClickListener {
+            actualDice = 8
+            binding.tvDiceNumber.text = " "
+            binding.imgDice.setImageResource(R.drawable.d8)
+        }
+        binding.addD10Dice.setOnClickListener {
+            actualDice = 10
+            binding.tvDiceNumber.text = " "
+            binding.imgDice.setImageResource(R.drawable.d10)
+        }
+        binding.addD12Dice.setOnClickListener {
+            actualDice = 12
+            binding.tvDiceNumber.text = " "
+            binding.imgDice.setImageResource(R.drawable.d12)
+        }
+        binding.addD20Dice.setOnClickListener {
+            actualDice = 20
+            binding.tvDiceNumber.text = " "
+            binding.imgDice.setImageResource(R.drawable.d20)
+        }
+        binding.addD100Dice.setOnClickListener {
+            actualDice = 100
+            binding.tvDiceNumber.text = " "
+            binding.imgDice.setImageResource(R.drawable.d100)
         }
         binding.btnRollDice.setOnClickListener {
             val maxNumber = actualDice
