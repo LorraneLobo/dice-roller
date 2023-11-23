@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.diceroll.R
 import com.example.diceroll.domain.Dice
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
@@ -19,11 +20,40 @@ class MainViewModel : ViewModel() {
         Dice(100, R.drawable.d100),
     )
 
-    var selectedDice: MutableStateFlow<Dice> = MutableStateFlow(diceList.first())
+    private val _selectedDice: MutableStateFlow<Dice> = MutableStateFlow(diceList.first())
+    val selectedDice: StateFlow<Dice> = _selectedDice
+
+    private val _diceResult: MutableStateFlow<Int?> = MutableStateFlow(null)
+    val diceResult: StateFlow<Int?> = _diceResult
+
+    private val _diceImage: MutableStateFlow<Int> = MutableStateFlow(diceList.first().image)
+    val diceImage: StateFlow<Int> = _diceImage
+
 
     fun selectDice(dice: Dice) {
         viewModelScope.launch {
-            selectedDice.emit(dice)
+            _selectedDice.emit(dice)
+            _diceResult.emit(null)
+        }
+    }
+
+    fun rollDice() {
+        viewModelScope.launch {
+            if (selectedDice.value.faces == 6) {
+                val image = when ((1..6).random()) {
+                    1 -> R.drawable.dice1
+                    2 -> R.drawable.dice2
+                    3 -> R.drawable.dice3
+                    4 -> R.drawable.dice4
+                    5 -> R.drawable.dice5
+                    6 -> R.drawable.dice6
+                    else -> R.drawable.dice1
+                }
+                _diceImage.emit(image)
+            } else {
+                val value = (1..selectedDice.value.faces).random()
+                _diceResult.emit(value)
+            }
         }
     }
 }
