@@ -14,7 +14,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels()
-    private var actualDice = 6
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,11 +25,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun setClickListeners() {
         binding.btnRollDice.setOnClickListener {
-            val maxNumber = actualDice
-            if (maxNumber == 6 ) {
+            if (viewModel.selectedDice.value.faces == 6) {
                 rollClassicD6Dice()
             } else {
-                val value = (1..maxNumber).random()
+                val value = (1..viewModel.selectedDice.value.faces).random()
                 binding.tvDiceNumber.visibility = View.VISIBLE
                 binding.tvDiceNumber.text = "$value"
             }
@@ -57,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                 label.labelText = "Rolar D${dice.faces}"
                 fabOptionIcon = AppCompatResources.getDrawable(this@MainActivity, dice.image)
                 setOnClickListener {
-                    actualDice = dice.faces
+                    viewModel.selectDice(dice)
                     binding.tvDiceNumber.text = " "
                     binding.imgDice.setImageResource(dice.image)
                 }
