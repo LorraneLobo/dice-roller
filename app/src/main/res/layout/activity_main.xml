@@ -32,6 +32,9 @@
         android:id="@+id/tvDiceNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/light_bearer"
+        android:textSize="@dimen/dice_text_size"
+        android:textColor="@color/white"
         android:text="@string/empty_string"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/imgDice"
@@ -48,14 +51,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top|end"
-            app:efab_fabOptionPosition="below"
-            app:efab_icon="@drawable/dices"
-            app:efab_color="@color/purple_200"
-            app:maxImageSize="46dp"
-            app:efab_fabOptionSize="mini"
-            app:efab_iconAnimationRotationDeg="-135"
             android:layout_marginTop="@dimen/margin_4"
-            android:layout_marginEnd="@dimen/margin_4" />
+            android:layout_marginEnd="@dimen/margin_4"
+            app:efab_color="@color/purple_200"
+            app:efab_fabOptionPosition="below"
+            app:efab_fabOptionSize="mini"
+            app:efab_icon="@drawable/dices"
+            app:efab_iconAnimationRotationDeg="-135"
+            app:maxImageSize="46dp" />
 
     </com.nambimobile.widgets.efab.ExpandableFabLayout>
 
