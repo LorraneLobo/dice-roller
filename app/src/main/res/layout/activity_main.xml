@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/motion_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layoutDescription="@xml/activity_main_scene"
     tools:context=".presentation.activity.MainActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -33,9 +35,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/light_bearer"
-        android:textSize="@dimen/dice_text_size"
-        android:textColor="@color/white"
         android:text="@string/empty_string"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dice_text_size"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/imgDice"
         app:layout_constraintEnd_toEndOf="@+id/imgDice"
@@ -61,4 +63,4 @@
 
     </com.nambimobile.widgets.efab.ExpandableFabLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>

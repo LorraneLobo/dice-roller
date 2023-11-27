@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="2000">
+       <KeyFrameSet/>
+        <OnClick motion:targetId="@+id/btnRollDice"/>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/tvDiceNumber"
+            motion:layout_constraintEnd_toEndOf="@+id/imgDice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@+id/imgDice"
+            android:visibility="visible"
+            motion:layout_constraintTop_toTopOf="@+id/imgDice"
+            motion:layout_constraintStart_toStartOf="@+id/imgDice" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/imgDice"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toTopOf="@+id/btnRollDice"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:rotationX="1800"
+            android:rotationY="1800"
+            android:rotation="1800" />
+        <Constraint
+            android:id="@+id/tvDiceNumber"
+            motion:layout_constraintEnd_toEndOf="@+id/imgDice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@+id/imgDice"
+            android:visibility="visible"
+            motion:layout_constraintTop_toTopOf="@+id/imgDice"
+            motion:layout_constraintStart_toStartOf="@+id/imgDice"
+            android:rotation="3600" />
+    </ConstraintSet>
+</MotionScene>

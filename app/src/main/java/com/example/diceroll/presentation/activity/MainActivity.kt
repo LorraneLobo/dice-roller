@@ -5,6 +5,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -22,18 +23,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setClickListeners()
-        configDicesView()
+        configDicesListView()
         setLifeCycleScopes()
+        setupMotionLayout()
     }
 
-    private fun setClickListeners() {
-        binding.btnRollDice.setOnClickListener {
-            viewModel.rollDice()
-        }
-    }
-
-    private fun configDicesView() {
+    private fun configDicesListView() {
         viewModel.diceList.forEach { dice ->
             val fab = FabOption(context = this).apply {
                 label.labelText = "Rolar D${dice.faces}"
@@ -71,5 +66,37 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun setupMotionLayout() {
+        binding.motionLayout.setTransitionListener(object : MotionLayout.TransitionListener {
+            override fun onTransitionStarted(
+                motionLayout: MotionLayout?,
+                startId: Int,
+                endId: Int
+            ) {
+                binding.tvDiceNumber.visibility = View.GONE
+            }
+
+            override fun onTransitionChange(
+                motionLayout: MotionLayout?,
+                startId: Int,
+                endId: Int,
+                progress: Float
+            ) {
+            }
+
+            override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
+                viewModel.rollDice()
+            }
+
+            override fun onTransitionTrigger(
+                motionLayout: MotionLayout?,
+                triggerId: Int,
+                positive: Boolean,
+                progress: Float
+            ) {
+            }
+        })
     }
 }
