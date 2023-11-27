@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 class MainViewModel : ViewModel() {
 
     val diceList = listOf(
-        Dice(6, R.drawable.dice1),
+        Dice(6, R.drawable.dice_1),
         Dice(4, R.drawable.d4),
         Dice(8, R.drawable.d8),
         Dice(10, R.drawable.d10),
@@ -41,13 +41,13 @@ class MainViewModel : ViewModel() {
         viewModelScope.launch {
             if (selectedDice.value.faces == 6) {
                 val image = when ((1..6).random()) {
-                    1 -> R.drawable.dice1
-                    2 -> R.drawable.dice2
-                    3 -> R.drawable.dice3
-                    4 -> R.drawable.dice4
-                    5 -> R.drawable.dice5
-                    6 -> R.drawable.dice6
-                    else -> R.drawable.dice1
+                    1 -> R.drawable.dice_1
+                    2 -> R.drawable.dice_2
+                    3 -> R.drawable.dice_3
+                    4 -> R.drawable.dice_4
+                    5 -> R.drawable.dice_5
+                    6 -> R.drawable.dice_6
+                    else -> R.drawable.dice_1
                 }
                 _diceImage.emit(image)
             } else {
