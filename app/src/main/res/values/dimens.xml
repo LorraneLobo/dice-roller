@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="title_text_size">30sp</dimen>
-    <dimen name="dice_text_size">30sp</dimen>
+    <dimen name="dice_text_size">40sp</dimen>
     <dimen name="margin_4">16dp</dimen>
 </resources>
