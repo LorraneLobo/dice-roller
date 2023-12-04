@@ -14,7 +14,9 @@ import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.example.diceroll.R
 import com.example.diceroll.databinding.ActivityMainBinding
+import com.example.diceroll.presentation.adapters.ResultDiceAdapter
 import com.example.diceroll.presentation.viewmodel.MainViewModel
 import com.nambimobile.widgets.efab.FabOption
 import kotlinx.coroutines.launch
@@ -24,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels()
+    private val adapter: ResultDiceAdapter = ResultDiceAdapter()
 
     private var sensorManager: SensorManager? = null
     private var acceleration = 0f
@@ -38,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         setLifeCycleScopes()
         setupMotionLayout()
         createSensor()
+        binding.rvLastResults.adapter = adapter
     }
 
     private fun configDicesListView() {
@@ -58,23 +62,37 @@ class MainActivity : AppCompatActivity() {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.diceResult
                     .collect { diceResult ->
-                        binding.tvDiceNumber.visibility = View.VISIBLE
-                        binding.tvDiceNumber.text = diceResult?.toString().orEmpty()
+                        if (viewModel.selectedDice.value.faces == 6) {
+                            val image = when (diceResult) {
+                                1 -> R.drawable.dice_1
+                                2 -> R.drawable.dice_2
+                                3 -> R.drawable.dice_3
+                                4 -> R.drawable.dice_4
+                                5 -> R.drawable.dice_5
+                                6 -> R.drawable.dice_6
+                                else -> R.drawable.dice_1
+                            }
+                            binding.tvDiceNumber.text = ""
+                            binding.imgDice.setImageResource(image)
+                        } else {
+                            binding.tvDiceNumber.visibility = View.VISIBLE
+                            binding.tvDiceNumber.text = diceResult?.toString().orEmpty()
+                        }
                     }
             }
         }
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.diceImage.collect {
+                viewModel.selectedDice.collect {
                     binding.tvDiceNumber.visibility = View.GONE
-                    binding.imgDice.setImageResource(it)
+                    binding.imgDice.setImageResource(it.image)
                 }
             }
         }
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.selectedDice.collect {
-                    binding.imgDice.setImageResource(it.image)
+                viewModel.diceHistory.collect {
+                    adapter.submitList(it)
                 }
             }
         }
@@ -116,8 +134,10 @@ class MainActivity : AppCompatActivity() {
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
 
         sensorManager?.let {
-            it.registerListener(sensorListener, it
-                .getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL)
+            it.registerListener(
+                sensorListener, it
+                    .getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL
+            )
 
             acceleration = 10f
             currentAcceleration = SensorManager.GRAVITY_EARTH
@@ -140,12 +160,15 @@ class MainActivity : AppCompatActivity() {
                 binding.btnRollDice.performClick()
             }
         }
+
         override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {}
     }
 
     override fun onResume() {
-        sensorManager?.registerListener(sensorListener, sensorManager?.getDefaultSensor(
-            Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL
+        sensorManager?.registerListener(
+            sensorListener, sensorManager?.getDefaultSensor(
+                Sensor.TYPE_ACCELEROMETER
+            ), SensorManager.SENSOR_DELAY_NORMAL
         )
         super.onResume()
     }
