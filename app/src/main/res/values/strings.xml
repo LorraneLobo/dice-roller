@@ -5,4 +5,6 @@
     <string name="dice_title">Jogar Dado</string>
     <string name="dice_button_text">Jogar Dado</string>
     <string name="dice_image_description">Face de um dado</string>
+    <string name="dice_result_image_description">imagem de um dado</string>
+    <string name="dice_result_title">Ultimos resultados:</string>
 </resources>

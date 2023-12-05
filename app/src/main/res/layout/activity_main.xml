@@ -10,31 +10,31 @@
     tools:context=".presentation.activity.MainActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imgDice"
+        android:id="@+id/img_dice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/dice_image_description"
         android:src="@drawable/dice_1"
-        app:layout_constraintBottom_toTopOf="@+id/btnRollDice"
+        app:layout_constraintBottom_toTopOf="@+id/btn_roll_dice"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnRollDice"
+        android:id="@+id/btn_roll_dice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_4"
         android:layout_marginBottom="@dimen/margin_4"
         android:text="@string/dice_button_text"
         android:backgroundTint="@color/black"
-        app:cornerRadius="16dp"
+        app:cornerRadius="@dimen/margin_4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/tvDiceNumber"
+        android:id="@+id/tv_dice_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/light_bearer"
@@ -42,10 +42,10 @@
         android:textColor="@color/white"
         android:textSize="@dimen/dice_text_size"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/imgDice"
-        app:layout_constraintEnd_toEndOf="@+id/imgDice"
-        app:layout_constraintStart_toStartOf="@+id/imgDice"
-        app:layout_constraintTop_toTopOf="@+id/imgDice" />
+        app:layout_constraintBottom_toBottomOf="@+id/img_dice"
+        app:layout_constraintEnd_toEndOf="@+id/img_dice"
+        app:layout_constraintStart_toStartOf="@+id/img_dice"
+        app:layout_constraintTop_toTopOf="@+id/img_dice" />
 
     <TextView
         android:id="@+id/tv_last_result"
@@ -53,15 +53,15 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginVertical="16dp"
+        android:layout_marginStart="@dimen/margin_4"
+        android:layout_marginVertical="@dimen/margin_4"
         android:fontFamily="@font/light_bearer"
-        android:text="Ultimos resultados:"
+        android:text="@string/dice_result_title"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="@dimen/text_04" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvLastResults"
+        android:id="@+id/rv_last_results"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -70,7 +70,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_last_result" />
 
     <com.nambimobile.widgets.efab.ExpandableFabLayout
-        android:id="@+id/diceButtons"
+        android:id="@+id/dice_buttons"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

@@ -8,41 +8,41 @@
         motion:constraintSetStart="@id/start"
         motion:duration="2000">
        <KeyFrameSet/>
-        <OnClick motion:targetId="@+id/btnRollDice"/>
+        <OnClick motion:targetId="@+id/btn_roll_dice"/>
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
         <Constraint
-            android:id="@+id/tvDiceNumber"
-            motion:layout_constraintEnd_toEndOf="@+id/imgDice"
+            android:id="@+id/tv_dice_number"
+            motion:layout_constraintEnd_toEndOf="@+id/img_dice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toBottomOf="@+id/imgDice"
-            motion:layout_constraintTop_toTopOf="@+id/imgDice"
-            motion:layout_constraintStart_toStartOf="@+id/imgDice" />
+            motion:layout_constraintBottom_toBottomOf="@+id/img_dice"
+            motion:layout_constraintTop_toTopOf="@+id/img_dice"
+            motion:layout_constraintStart_toStartOf="@+id/img_dice" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
         <Constraint
-            android:id="@+id/imgDice"
+            android:id="@+id/img_dice"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toTopOf="@+id/btnRollDice"
+            motion:layout_constraintBottom_toTopOf="@+id/btn_roll_dice"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             android:rotationX="1800"
             android:rotationY="1800"
             android:rotation="1800" />
         <Constraint
-            android:id="@+id/tvDiceNumber"
-            motion:layout_constraintEnd_toEndOf="@+id/imgDice"
+            android:id="@+id/tv_dice_number"
+            motion:layout_constraintEnd_toEndOf="@+id/img_dice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toBottomOf="@+id/imgDice"
+            motion:layout_constraintBottom_toBottomOf="@+id/img_dice"
             android:visibility="visible"
-            motion:layout_constraintTop_toTopOf="@+id/imgDice"
-            motion:layout_constraintStart_toStartOf="@+id/imgDice"
+            motion:layout_constraintTop_toTopOf="@+id/img_dice"
+            motion:layout_constraintStart_toStartOf="@+id/img_dice"
             android:rotation="3600" />
     </ConstraintSet>
 </MotionScene>

@@ -4,4 +4,6 @@
     <string name="dice_title">Throw the dice</string>
     <string name="dice_button_text">Throw the dice</string>
     <string name="dice_image_description">Dice face image</string>
+    <string name="dice_result_image_description">dice image</string>
+    <string name="dice_result_title">Latest results:</string>
 </resources>
