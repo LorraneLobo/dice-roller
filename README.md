@@ -13,5 +13,5 @@ O aplicativo foi desenvolvido utilizando a linguagem de programação <b>Kotlin<
 Os princípios da Programação Orientada a Objetos (POO) foram aplicados para promover uma estrutura de código mais coesa e eficiente.</br>
 Além disso, foi utilizada a biblioteca <a href="https://github.com/nambicompany/expandable-fab">ExpandableFab</a> para criar o botão flutuante de escolher dados.</br></br>
 
-https://github.com/LorraneLobo/dice-roll/assets/23324656/6bcb10c9-8d45-41d2-bff6-1732c51588e6
+https://github.com/LorraneLobo/dice-roller/assets/23324656/f93761cc-fce2-47aa-9ac9-8fd957d1d513
 
